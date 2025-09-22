@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, Image } from 'react-native'
 import Logo from '../assets/img/logo_light.png'
+import { Link } from 'expo-router'
 
 const Home = () => {
   return (
@@ -11,6 +12,9 @@ const Home = () => {
 
       <Text style={styles.title}>The Number 1</Text>
       <Text style={{ marginTop: 10, marginBottom: 30 }}>Reading List App</Text>
+
+      <Link href='/about' style={styles.link}>About</Link>
+      <Link href='/contact' style={styles.link}>Contact</Link>
     </View>
   )
 }
@@ -30,4 +34,8 @@ const styles = StyleSheet.create({
   img: {
     marginVertical: 20,
   },
+  link: {
+    marginVertical: 10,
+    borderBottomWidth: 1,
+  }
 })
