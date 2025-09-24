@@ -32,12 +32,18 @@ importers:
       react-native:
         specifier: 0.81.4
         version: 0.81.4(@babel/core@7.28.4)(react@19.1.0)
+      react-native-appwrite:
+        specifier: ^0.14.0
+        version: 0.14.0(expo@54.0.9)(react-native@0.81.4(@babel/core@7.28.4)(react@19.1.0))
       react-native-safe-area-context:
         specifier: ~5.6.1
         version: 5.6.1(react-native@0.81.4(@babel/core@7.28.4)(react@19.1.0))(react@19.1.0)
       react-native-screens:
         specifier: ~4.16.0
         version: 4.16.0(react-native@0.81.4(@babel/core@7.28.4)(react@19.1.0))(react@19.1.0)
+      react-native-url-polyfill:
+        specifier: ^2.0.0
+        version: 2.0.0(react-native@0.81.4(@babel/core@7.28.4)(react@19.1.0))
 
 packages:
 
@@ -1619,6 +1625,12 @@ packages:
       expo: '*'
       react-native: '*'
 
+  expo-file-system@18.1.11:
+    resolution: {integrity: sha512-HJw/m0nVOKeqeRjPjGdvm+zBi5/NxcdPf8M8P3G2JFvH5Z8vBWqVDic2O58jnT1OFEy0XXzoH9UqFu7cHg9DTQ==}
+    peerDependencies:
+      expo: '*'
+      react-native: '*'
+
   expo-file-system@19.0.14:
     resolution: {integrity: sha512-0CA7O5IYhab11TlxQlJAx0Xm9pdkk/zEHNiW+Hh/T4atWi9U/J38CIp7iNYSrBvy9dC3rJbze5D1ANcKKr4mSQ==}
     peerDependencies:
@@ -2522,6 +2534,12 @@ packages:
   react-is@19.1.1:
     resolution: {integrity: sha512-tr41fA15Vn8p4X9ntI+yCyeGSf1TlYaY5vlTZfQmeLBrFo3psOPX6HhTDnFNL9uj3EhP0KAQ80cugCl4b4BERA==}
 
+  react-native-appwrite@0.14.0:
+    resolution: {integrity: sha512-2nMr0qo53H9KQq+JWht+eF/d4NcuuLJEQIjqOGuHLOCBYK3KqoojpmaJ3hsRyQ/6q8prL7vGwqEQOfplraJjMg==}
+    peerDependencies:
+      expo: '*'
+      react-native: '*'
+
   react-native-is-edge-to-edge@1.2.1:
     resolution: {integrity: sha512-FLbPWl/MyYQWz+KwqOZsSyj2JmLKglHatd3xLZWskXOpRaio4LfEDEz8E/A6uD8QoTHW6Aobw1jbEwK7KMgR7Q==}
     peerDependencies:
@@ -2538,6 +2556,11 @@ packages:
     resolution: {integrity: sha512-yIAyh7F/9uWkOzCi1/2FqvNvK6Wb9Y1+Kzn16SuGfN9YFJDTbwlzGRvePCNTOX0recpLQF3kc2FmvMUhyTCH1Q==}
     peerDependencies:
       react: '*'
+      react-native: '*'
+
+  react-native-url-polyfill@2.0.0:
+    resolution: {integrity: sha512-My330Do7/DvKnEvwQc0WdcBnFPploYKp9CYlefDXzIdEaA+PAhDYllkvGeEroEzvc4Kzzj2O4yVdz8v6fjRvhA==}
+    peerDependencies:
       react-native: '*'
 
   react-native@0.81.4:
@@ -5051,6 +5074,11 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  expo-file-system@18.1.11(expo@54.0.9)(react-native@0.81.4(@babel/core@7.28.4)(react@19.1.0)):
+    dependencies:
+      expo: 54.0.9(@babel/core@7.28.4)(@expo/metro-runtime@6.1.2)(expo-router@6.0.7)(react-native@0.81.4(@babel/core@7.28.4)(react@19.1.0))(react@19.1.0)
+      react-native: 0.81.4(@babel/core@7.28.4)(react@19.1.0)
+
   expo-file-system@19.0.14(expo@54.0.9)(react-native@0.81.4(@babel/core@7.28.4)(react@19.1.0)):
     dependencies:
       expo: 54.0.9(@babel/core@7.28.4)(@expo/metro-runtime@6.1.2)(expo-router@6.0.7)(react-native@0.81.4(@babel/core@7.28.4)(react@19.1.0))(react@19.1.0)
@@ -6169,6 +6197,12 @@ snapshots:
 
   react-is@19.1.1: {}
 
+  react-native-appwrite@0.14.0(expo@54.0.9)(react-native@0.81.4(@babel/core@7.28.4)(react@19.1.0)):
+    dependencies:
+      expo: 54.0.9(@babel/core@7.28.4)(@expo/metro-runtime@6.1.2)(expo-router@6.0.7)(react-native@0.81.4(@babel/core@7.28.4)(react@19.1.0))(react@19.1.0)
+      expo-file-system: 18.1.11(expo@54.0.9)(react-native@0.81.4(@babel/core@7.28.4)(react@19.1.0))
+      react-native: 0.81.4(@babel/core@7.28.4)(react@19.1.0)
+
   react-native-is-edge-to-edge@1.2.1(react-native@0.81.4(@babel/core@7.28.4)(react@19.1.0))(react@19.1.0):
     dependencies:
       react: 19.1.0
@@ -6186,6 +6220,11 @@ snapshots:
       react-native: 0.81.4(@babel/core@7.28.4)(react@19.1.0)
       react-native-is-edge-to-edge: 1.2.1(react-native@0.81.4(@babel/core@7.28.4)(react@19.1.0))(react@19.1.0)
       warn-once: 0.1.1
+
+  react-native-url-polyfill@2.0.0(react-native@0.81.4(@babel/core@7.28.4)(react@19.1.0)):
+    dependencies:
+      react-native: 0.81.4(@babel/core@7.28.4)(react@19.1.0)
+      whatwg-url-without-unicode: 8.0.0-3
 
   react-native@0.81.4(@babel/core@7.28.4)(react@19.1.0):
     dependencies:
