@@ -13,8 +13,7 @@ export const UserProvider = ({ children }) => {
       const response = await account.get();
       setUser(response);
     } catch (e) {
-      console.error(e);
-      throw e;
+      throw Error(e.message || e);
     }
   }
 
@@ -23,8 +22,7 @@ export const UserProvider = ({ children }) => {
       await account.create(ID.unique(), email, password);
       await login(email, password);
     } catch (e) {
-      console.error(e);
-      throw e;
+      throw Error(e.message || e);
     }
   }
 

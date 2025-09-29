@@ -2,6 +2,7 @@ import { Link } from 'expo-router'
 import { Keyboard, StyleSheet, Text, TouchableWithoutFeedback } from 'react-native'
 import { useState } from 'react'
 import { useUser } from '../../hooks/useUser'
+import { Colors } from '../../constants/colors'
 import ThemedView from '../../components/ThemedView'
 import ThemedText from '../../components/ThemedText'
 import Spacer from '../../components/Spacer'
@@ -11,13 +12,17 @@ import ThemedTextInput from '../../components/ThemedTextInput'
 const Register = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState(null)
 
   const { register } = useUser();
 
   const handleSubmit = async () => {
+    setError(null);
+    
     try {
       await register(email, password);
     } catch (e) {
+      setError(e.message || 'An error occurred');
       console.error(e);
     }
   }
@@ -51,6 +56,10 @@ const Register = () => {
           </Text>
         </ThemedButton>
 
+        <Spacer />
+
+        {error && <Text style={styles.error}>{error}</Text>}
+
         <Spacer height={100} />
 
         <Link href='/login'>
@@ -73,5 +82,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 18,
     marginBottom: 30
+  },
+  error: {
+    color: Colors.warning,
+    padding: 10,
+    backgroundColor: '#f5c1c8',
+    borderColor: Colors.warning,
+    borderWidth: 1,
+    borderRadius: 6,
+    marginHorizontal: 10,
   }
 })
