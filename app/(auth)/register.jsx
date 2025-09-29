@@ -1,6 +1,7 @@
 import { Link } from 'expo-router'
 import { Keyboard, StyleSheet, Text, TouchableWithoutFeedback } from 'react-native'
 import { useState } from 'react'
+import { useUser } from '../../hooks/useUser'
 import ThemedView from '../../components/ThemedView'
 import ThemedText from '../../components/ThemedText'
 import Spacer from '../../components/Spacer'
@@ -11,8 +12,14 @@ const Register = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleSubmit = () => {
-    console.log('Register with:', { email, password })
+  const { register } = useUser();
+
+  const handleSubmit = async () => {
+    try {
+      await register(email, password);
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   return (
