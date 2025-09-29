@@ -27,7 +27,12 @@ export const UserProvider = ({ children }) => {
   }
 
   async function logout() {
-    throw new Error("Not implemented");
+    try {
+      await account.deleteSession('current');
+      setUser(null);
+    } catch (e) {
+      throw Error(e.message || e);
+    }
   }
 
   return (
