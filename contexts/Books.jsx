@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { ID, Permission, Query, Role } from "react-native-appwrite";
-import { COLLECTION_ID, DATABASE_ID, databases } from "../lib/appwrite";
+import { client, COLLECTION_ID, DATABASE_ID, databases } from "../lib/appwrite";
 import { useUser } from "../hooks/useUser";
 
 export const BooksContext = createContext();
@@ -57,11 +57,28 @@ export const BooksProvider = ({ children }) => {
   }
 
   useEffect(() => {
+    let unsubscribe;
+    const channel = `databases.${DATABASE_ID}.collections.${COLLECTION_ID}.documents`;
+
     if (user?.$id) {
       fetchBooks();
+
+      unsubscribe = client.subscribe(channel, response => {
+        const { payload, events } = response;
+
+        if (events[0].includes('create')) {
+          setBooks(prevBooks => [...prevBooks, payload]);
+        }
+      })
     } else {
       setBooks([]);
     }
+
+    return () => {
+      if (unsubscribe) {
+        unsubscribe();
+      }
+    };
   }, [user]);
 
   const value = { books, setBooks, fetchBooks, fetchBookById, createBook, deleteBook };
