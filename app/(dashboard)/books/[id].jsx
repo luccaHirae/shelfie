@@ -1,7 +1,8 @@
-import { StyleSheet } from 'react-native'
-import { useLocalSearchParams } from 'expo-router'
+import { StyleSheet, Text } from 'react-native'
+import { useLocalSearchParams, useRouter } from 'expo-router'
 import { useEffect, useState } from 'react'
 import { useBooks } from '../../../hooks/useBooks'
+import { Colors } from '../../../constants/colors'
 import ThemedText from '../../../components/ThemedText'
 import ThemedButton from '../../../components/ThemedButton'
 import ThemedView from '../../../components/ThemedView'
@@ -11,9 +12,17 @@ import ThemedLoader from '../../../components/ThemedLoader'
 
 const BookDetails = () => {
   const { id } = useLocalSearchParams();
-  const { fetchBookById } = useBooks();
+  const { fetchBookById, deleteBook } = useBooks();
+  const router = useRouter();
 
   const [book, setBook] = useState(null);
+
+  async function handleDelete() {
+    if (book) {
+      await deleteBook(book.$id);
+      router.replace('/books');
+    }
+  }
 
   useEffect(() => {
     async function loadBook() {
@@ -43,6 +52,12 @@ const BookDetails = () => {
         <Spacer height={10} />
         <ThemedText>{book.description}</ThemedText>
       </ThemedCard>
+
+      <ThemedButton style={styles.delete} onPress={handleDelete}>
+        <Text style={{ color: 'white', textAlign: 'center' }}>
+          Delete Book
+        </Text>
+      </ThemedButton>
     </ThemedView>
   )
 }
@@ -60,5 +75,11 @@ const styles = StyleSheet.create({
   },
   card: {
     margin: 20,
+  },
+  delete: {
+    marginTop: 40,
+    backgroundColor: Colors.warning,
+    width: 200,
+    alignSelf: 'center',
   }
 })
